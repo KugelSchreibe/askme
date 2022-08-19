@@ -14,7 +14,7 @@
                     title: 'Удалить вопрос', form: {data: {turbo_confirm: 'Точно удалить вопрос?'}} %>
 
       <% unless @question.hidden %>
-        <%= button_to fa_icon('eye-slash'), ("/questions/#{@question.id}/hide"), method: :put, title: 'Скрыть' %>
+        <%= button_to fa_icon('eye-slash'), hide_question_path(@question), method: :put, title: 'Скрыть' %>
       <% end %>
     </div>
 
