@@ -1,5 +1,5 @@
 body {
-  background: #03071E;
+  background: #013F4E;
   display: flex;
   justify-content: center;
 }
@@ -12,7 +12,21 @@ body {
 
 .container {
   background: #fff;
+}
+
+.container, .navbar {
   padding: 20px;
+}
+
+.navbar {
+  background-color: #0BA5BE;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  text-decoration: none;
 }
 
 .hidden {

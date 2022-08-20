@@ -4,7 +4,7 @@ body {
 }
 
 a, button {
-  color: #DC2F02;
+  color: white;
 }
 
 .title-lg {
@@ -21,4 +21,16 @@ a, button {
 
 .text-sm {
   font-size: 80%;
+}
+
+.text-gray {
+  color: #a0a0a0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
 }

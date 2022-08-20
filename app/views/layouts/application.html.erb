@@ -12,6 +12,32 @@
 
   <body>
     <div class="wrapper">
+      <div class="navbar">
+        <p class="title-sm text-bold">
+          <%= link_to 'Ask me!', root_path %>
+        </p>
+
+        <div>
+          <% if current_user.present? %>
+            <%= content_tag 'span', "@#{current_user.nickname}", class: 'mr-sm' %>
+            <%=  button_to 'Выйти', session_path, method: :delete, form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
+          <% else %>
+            <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
+            <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if flash[:notice].present? %>
+        <p class="mb mt message message-notice text-center">
+          <%= flash[:notice] %>
+        </p>
+      <% elsif flash[:alert].present? %>
+        <p class="mb mt message message-alert text-center">
+          <%= flash[:alert] %>
+        </p>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
