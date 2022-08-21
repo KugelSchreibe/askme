@@ -4,6 +4,10 @@ body {
 }
 
 a, button {
+  color: #000000;
+}
+
+.white-link {
   color: white;
 }
 
@@ -16,7 +20,7 @@ a, button {
 }
 
 .title-sm {
-  font-size: 125;
+  font-size: 125%;
 }
 
 .text-sm {
@@ -33,4 +37,8 @@ a, button {
 
 .text-bold {
   font-weight: bold;
+}
+
+.text-error {
+  color: #EA592A;
 }

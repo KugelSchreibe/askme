@@ -1,6 +1,10 @@
 <div class="container">
+  <div class="mb-lg">
+    <%= link_to fa_icon('arrow-left'), :back, title: 'Назад' %>
+  </div>
+
   <h2 class="title">
-    Присоединяйся и спрашивай!
+    Редактирование пользователя
   </h2>
 
   <%= render 'errors_output', obj: @user %>
@@ -21,15 +25,12 @@
         <%= form.text_field :nickname, class: 'form-text-field' %>
       </p>
 
-      <p class="mt">
-        <%= form.label :email, 'Ваш email' %>
-      </p>
-      <p>
-        <%= form.text_field :email, class: 'form-text-field' %>
+      <p class="mt-lg">
+        Если не хотите менять пароль - оставьте эти поля пустыми
       </p>
 
       <p class="mt">
-        <%= form.label :password, 'Ваш пароль' %>
+        <%= form.label :password, 'Новый пароль' %>
       </p>
       <p>
         <%= form.password_field :password, class: 'form-text-field' %>
@@ -43,7 +44,7 @@
       </p>
 
       <p class="mt-lg">
-        <%= form.submit 'Зарегистрироваться', class: 'button button-main' %>
+        <%= form.submit 'Сохранить', class: 'button button-main', method: :patch %>
       </p>
     <% end %>
   </div>

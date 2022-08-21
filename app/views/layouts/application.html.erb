@@ -14,13 +14,13 @@
     <div class="wrapper">
       <div class="navbar">
         <p class="title-sm text-bold">
-          <%= link_to 'Ask me!', root_path %>
+          <%= link_to 'Ask me!', root_path, class: 'white-link' %>
         </p>
 
         <div>
           <% if current_user.present? %>
-            <%= content_tag 'span', "@#{current_user.nickname}", class: 'mr-sm' %>
-            <%=  button_to 'Выйти', session_path, method: :delete, form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
+            <%= link_to "@#{current_user.nickname}", edit_user_path(current_user), class: 'mr-sm white-link' %>
+            <%=  button_to 'Выйти', session_path, method: :delete, class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
           <% else %>
             <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
             <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
