@@ -3,9 +3,6 @@ class QuestionsController < ApplicationController
 
   def create 
     @question = Question.new
-
-    debugger
-
     @question.update(question_params)
 
     if @question.save
