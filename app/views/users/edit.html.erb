@@ -25,6 +25,13 @@
         <%= form.text_field :nickname, class: 'form-text-field' %>
       </p>
 
+      <p class="mt">
+        <%= form.label :header_color, 'Цвет шапки вашего профиля' %>
+      </p>
+      <p>
+        <%= form.color_field :header_color, value: current_user.header_color, class: 'form-text-field' %>
+      </p>
+
       <p class="mt-lg">
         Если не хотите менять пароль - оставьте эти поля пустыми
       </p>

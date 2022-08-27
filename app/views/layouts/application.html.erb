@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Askme</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Askme</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <div class="wrapper">
-      <div class="navbar">
-        <p class="title-sm text-bold">
-          <%= link_to 'Ask me!', root_path, class: 'white-link' %>
-        </p>
-
-        <div>
-          <% if current_user.present? %>
-            <%= link_to "@#{current_user.nickname}", edit_user_path(current_user), class: 'mr-sm white-link' %>
-            <%=  button_to 'Выйти', session_path, method: :delete, class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
-          <% else %>
-            <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
-            <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
-          <% end %>
-        </div>
-      </div>
-
-      <% if flash[:notice].present? %>
-        <p class="mb mt message message-notice text-center">
-          <%= flash[:notice] %>
-        </p>
-      <% elsif flash[:alert].present? %>
-        <p class="mb mt message message-alert text-center">
-          <%= flash[:alert] %>
-        </p>
+<body>
+<div class="wrapper">
+  <%= tag.div class: "navbar", style: "background-color: #{header_color_checking(current_user)};" do %>
+    <p class="title-sm text-bold">
+      <%= link_to 'Ask me!', root_path, class: 'white-link' %>
+    </p>
+    <div>
+      <% if current_user.present? %>
+        <%= link_to "#{fnickname(current_user.nickname)}", edit_user_path(current_user), class: 'mr-sm white-link' %>
+        <%= button_to 'Выйти', session_path, method: :delete, class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
+      <% else %>
+        <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
+        <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
       <% end %>
-
-      <%= yield %>
     </div>
-  </body>
+  <% end %>
+
+  <% if flash[:notice].present? %>
+    <p class="mb mt message message-notice text-center">
+      <%= flash[:notice] %>
+    </p>
+  <% elsif flash[:alert].present? %>
+    <p class="mb mt message message-alert text-center">
+      <%= flash[:alert] %>
+    </p>
+  <% end %>
+
+  <%= yield %>
+</div>
+</body>
 </html>

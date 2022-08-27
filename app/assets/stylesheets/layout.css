@@ -19,7 +19,6 @@ body {
 }
 
 .navbar {
-  background-color: #0BA5BE;
   color: white;
   display: flex;
   justify-content: space-between;
