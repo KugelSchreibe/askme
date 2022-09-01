@@ -4,3 +4,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.main-part img {
+  max-width: 100%;
+}
