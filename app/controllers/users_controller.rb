@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      session[:header_color] = user_params[:header_color]
       redirect_to root_path, notice: 'Вы успешно зарегистрировались!'
     else
       flash.now[:alert] = 'Вы неправильно заполнили формы для регистрации'
