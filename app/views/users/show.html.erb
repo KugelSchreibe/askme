@@ -1,0 +1,31 @@
+<div class="user-box">
+  <h2 class="title-lg mt-lg">
+    <%= @user.name %>
+
+    <p class="text-bold mt mb-lg">
+      <%= fnickname(@user.nickname) %>
+    </p>
+  </h2>
+</div>
+
+<div class="container">
+  <p class="mt">
+    <%= render 'questions/form', question: @question %>
+  </p>
+</div>
+
+<div class="container mb-sm">
+  <h2 class="title-lg mb text-center">Вопросы</h2>
+</div>
+
+<% @questions.each do |question| %>
+  <% if question.hidden? %>
+    <div class="container hidden mb-sm">
+      <%= render question%>
+    </div>
+  <% else %>
+    <div class="container mb-sm">
+      <%= render question%>
+    </div>
+  <% end %>
+<% end %>
