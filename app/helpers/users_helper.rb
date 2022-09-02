@@ -4,6 +4,6 @@ module UsersHelper
   end
 
   def header_color_checking(user)
-    user&.header_color || DEFAULT_HEADER_COLOR
+    user&.header_color || User.DEFAULT_HEADER_COLOR
   end
 end

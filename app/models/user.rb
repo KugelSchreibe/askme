@@ -11,7 +11,12 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :header_color, comparison: { other_than: "#ffffff" }
 
-  DEFAULT_HEADER_COLOR = '#0BA5BE'
+  @@DEFAULT_HEADER_COLOR = '#0BA5BE'
+
+  def self.DEFAULT_HEADER_COLOR
+    @@DEFAULT_HEADER_COLOR
+  end
+
   def downcase_nickname
     nickname.downcase!
   end
