@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update(question_params)
-    redirect_to question_path(question), notice: 'Вопрос сохранен!'
+    redirect_to question_path(@question), notice: 'Вопрос сохранен!'
   end
 
   def destroy
