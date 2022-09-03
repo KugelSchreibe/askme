@@ -18,11 +18,12 @@
     </p>
     <div>
       <% if current_user.present? %>
-        <%= link_to "#{fnickname(current_user.nickname)}", edit_user_path(current_user), class: 'mr-sm white-link' %>
-        <%= button_to 'Выйти', session_path, method: :delete, class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
+        <%= link_to "#{fnickname(current_user.nickname)}", user_path(current_user), title: 'Профиль', class: 'mr-sm white-link' %>
+        <%= link_to fa_icon('cog'), edit_user_path(current_user), title: 'Настройки', class: 'white-link mr-sm' %>
+        <%= button_to fa_icon('sign-out'), session_path, title: 'Выход', method: :delete, class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
       <% else %>
-        <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
-        <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
+        <%= link_to 'Регистрация', new_user_path, class: 'white-link mr-sm' %>
+        <%= link_to fa_icon('sign-in'), new_session_path, title: 'Вход', class: 'white-link' %>
       <% end %>
     </div>
   <% end %>

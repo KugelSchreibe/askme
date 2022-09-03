@@ -28,8 +28,8 @@
       <p class="mt">
         <%= form.label :header_color, 'Цвет шапки вашего профиля' %>
       </p>
-      <p>
-        <%= form.color_field :header_color, class: 'form-text-field' %>
+      <p class="mt-sm">
+        <%= form.select :header_color, User.AVAILABLE_COLORS %>
       </p>
 
       <p class="mt-lg">
