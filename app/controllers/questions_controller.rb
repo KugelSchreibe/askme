@@ -1,9 +1,11 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[update show destroy hide edit]
+  before_action :ensure_current_user, only: %i[update destroy hide edit]
+  before_action :set_question_for_current_user, only: %i[update destroy hide edit]
 
   def create 
     @question = Question.new
-    @question.update(question_params)
+    @question.update(question_params_for_create)
+    @question.update(author: current_user)
 
     if @question.save
       redirect_to user_path(@question.user), notice: 'Вопрос создан!'
@@ -14,7 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(question_params)
+    @question.update(question_params_for_update)
     redirect_to user_path(@question.user), notice: 'Вопрос сохранен!'
   end
 
@@ -25,6 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find(params[:id])
   end
 
   def index
@@ -48,11 +51,19 @@ class QuestionsController < ApplicationController
 
   private
 
-  def question_params
-    params.require(:question).permit(:body, :user_id, :hidden)
+  def ensure_current_user
+    redirect_with_alert unless current_user.present?
   end
 
-  def set_question
-    @question = Question.find(params[:id])
+  def question_params_for_create
+    params.require(:question).permit(:user_id, :body)
+  end
+
+  def question_params_for_update
+    params.require(:question).permit(:hidden, :answer)
+  end
+
+  def set_question_for_current_user
+    @question = current_user.questions.find(params[:id])
   end
 end

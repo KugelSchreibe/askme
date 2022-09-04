@@ -9,25 +9,15 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: { in: 3..40 },
             format: { with: /\A[\w]+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :header_color, inclusion: { in: ['#0BA5BE', '#F57900', '#CC0000'] }
+  validates :header_color, format: { with: /\A(#FFF[0-9a-fA-f]{0,3})|(#0edab9)|(#0EDAB9)\z/ }
 
   @@DEFAULT_HEADER_COLOR = '#0BA5BE'
-
-  @@AVAILABLE_COLORS = [
-    ['По умолчанию', @@DEFAULT_HEADER_COLOR],
-    ['Оранжевый', '#F57900'],
-    ['Красный', '#CC0000'],
-  ]
-
-  def self.AVAILABLE_COLORS
-    @@AVAILABLE_COLORS
-  end
 
   def self.DEFAULT_HEADER_COLOR
     @@DEFAULT_HEADER_COLOR
   end
 
   def downcase_nickname
-    nickname.downcase!
+    nickname.try(:downcase!)
   end
 end

@@ -31,3 +31,8 @@ body {
 .hidden {
   opacity: 50%;
 }
+
+.all-center {
+  display: flex;
+  justify-content: center;
+}

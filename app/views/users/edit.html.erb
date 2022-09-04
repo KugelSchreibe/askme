@@ -29,7 +29,7 @@
         <%= form.label :header_color, 'Цвет шапки вашего профиля' %>
       </p>
       <p class="mt-sm">
-        <%= form.select :header_color, User.AVAILABLE_COLORS %>
+        <%= form.color_field :header_color %>
       </p>
 
       <p class="mt-lg">

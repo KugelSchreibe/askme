@@ -42,3 +42,19 @@ a, button {
 .text-error {
   color: #EA592A;
 }
+
+.text-dark-red {
+  color: #1124a2
+}
+
+.text-orange {
+  color: #ff3900;
+}
+
+.white-text {
+  color: white;
+}
+
+.without-underline {
+  text-decoration: none;
+}

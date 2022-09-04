@@ -1,21 +1,39 @@
-<h2 class="title-lg mb">Вопрос <%= question.id %></h2>
+<h2 class="title-lg mb">
+  Вопрос <%= question.id %>
+  <% if question.author.present? %>
+    <span>
+      от <%= link_to "#{fnickname(question.author.nickname)}", user_path(question.author),
+                     class: 'text-orange without-underline' %>
+    </span>
+  <% end %>
+</h2>
 
 <div class="mb-sm">
   <%= simple_format h(question.body) %>
 </div>
+
+<% if question.answer.present? %>
+  <div class="mb-sm text-dark-red">
+    <%= simple_format h(question.answer) %>
+  </div>
+<% end %>
 
 <div class="question-footer text-sm">
   <div class="text-gray">
     <%= l(question.created_at, format: :short) %>
   </div>
 
-  <div class="mt">
-    <%= link_to fa_icon('pencil'), edit_question_path(question), title: 'Изменить вопрос' %>
-    <%= button_to fa_icon('trash-o'), question_path(question), method: :delete,
-                  title: 'Удалить вопрос', form: {data: {turbo_confirm: 'Точно удалить вопрос?'}} %>
+  <% if current_user == question.user && current_user.present? %>
+    <div class="mt">
+      <% edit_icon = (question.answer.present? ? 'pencil' : 'reply') %>
 
-    <% unless question.hidden %>
-      <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Скрыть' %>
-    <% end %>
-  </div>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: 'Изменить вопрос', class: 'mr-sm' %>
+      <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, class: 'mr-sm',
+                    title: 'Удалить вопрос', form: {data: {turbo_confirm: 'Точно удалить вопрос?'}} %>
+
+      <% unless question.hidden %>
+        <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Скрыть' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
