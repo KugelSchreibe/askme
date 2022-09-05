@@ -17,7 +17,9 @@ class User < ApplicationRecord
     @@DEFAULT_HEADER_COLOR
   end
 
+  private
+
   def downcase_nickname
-    nickname.try(:downcase!)
+    nickname.downcase! unless nickname.nil?
   end
 end
