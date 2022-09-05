@@ -3,11 +3,9 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy hide edit]
 
   def create 
-    @question = Question.new
-    @question.update(question_params_for_create)
-    @question.update(author: current_user)
+    @question = Question.new(author: current_user)
 
-    if @question.save
+    if @question.update(question_params_for_create)
       redirect_to user_path(@question.user), notice: 'Вопрос создан!'
     else
       flash.now[:alert] = 'Вы неправильно заполнили формы для создания вопроса'
