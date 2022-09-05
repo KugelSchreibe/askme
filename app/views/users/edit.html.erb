@@ -7,6 +7,17 @@
     Редактирование пользователя
   </h2>
 
+  <div class="mt">
+    <p>
+      <%= image_tag @user.gravatar_url, title: "#{fnickname(@user.nickname)}", class: 'rounded' %>
+    </p>
+
+    <p class="text-sm mt-md mb-lg">
+      Чтобы поменять аватар - зарегистрируйтесь на
+      <%= link_to 'Gravatar', 'https://ru.gravatar.com/', class: 'without-underline title-sm text-orange' %>
+    </p>
+  </div>
+
   <%= render 'errors_output', obj: @user %>
 
   <div class="mt">

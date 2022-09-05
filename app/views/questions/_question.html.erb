@@ -1,25 +1,29 @@
-<h2 class="title-lg mb">
-  Вопрос <%= question.id %>
+<h2 class="title-lg mb title-sm">
+  Вопрос <%= link_to "##{question.id}", question_path(question), class: 'without-underline text-orange' %>
   <% if question.author.present? %>
     <span>
-      от <%= link_to "#{fnickname(question.author.nickname)}", user_path(question.author),
+      от <%= link_to "#{fnickname(question.author.nickname)}", user_profile_path(question.author),
                      class: 'text-orange without-underline' %>
+    </span>
+    <span>
+      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.author),
+                     class: 'text-green without-underline' %>
     </span>
   <% end %>
 </h2>
 
-<div class="mb-sm">
+<div class="mb-lg text-orange">
   <%= simple_format h(question.body) %>
 </div>
 
 <% if question.answer.present? %>
-  <div class="mb-sm text-dark-red">
+  <div class="mb-sm mt-lg text-green">
     <%= simple_format h(question.answer) %>
   </div>
 <% end %>
 
 <div class="question-footer text-sm">
-  <div class="text-gray">
+  <div class="text-gray mt">
     <%= l(question.created_at, format: :short) %>
   </div>
 

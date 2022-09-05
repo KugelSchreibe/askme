@@ -1,0 +1,39 @@
+.users-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.users-box-user {
+  flex-basis: 100px;
+  flex-grow: 0;
+  height: 100px;
+
+  text-align: center;
+  justify-content: center;
+}
+
+.users-box-user a {
+  color: white;
+  text-decoration: none;
+}
+
+.users-box-user-bg0 {
+  border: 3px solid #683fb9;
+}
+
+.users-box-user-bg1 {
+  border: 3px solid #275988;
+}
+
+.users-box-user-bg2 {
+  border: 3px solid #60b02a;
+}
+
+.users-box-user-bg3 {
+  border: 3px solid #c439c4;
+}
+
+.users-box-user-bg4 {
+  border: 3px solid #a11e1e;
+}

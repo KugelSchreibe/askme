@@ -1,5 +1,21 @@
 <div class="container mb-sm">
-  <h2 class="title-lg mb text-center">Вопросы</h2>
+  <h2 class="title-lg mb text-center">
+    Недавно добавились
+  </h2>
+
+  <div class="users-box">
+    <% @users.each do |user| %>
+      <%= render partial: 'users/user_avatar', locals: {user: user} %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-sm mb-sm">
+  <h2 class="title-lg">
+    <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
+    <%= @questions.count %>
+    <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросы') %>
+  </h2>
 </div>
 
 <% @questions.each do |question| %>

@@ -2,6 +2,10 @@
   <h2 class="title-lg mt-lg">
     <%= @user.name %>
 
+    <div class="mt-lg mb-md">
+      <%= render partial: 'users/user_avatar', locals: {user: @user} %>
+    </div>
+
     <p class="text-bold mt mb-lg">
       <%= fnickname(@user.nickname) %>
     </p>
