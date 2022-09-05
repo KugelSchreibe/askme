@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.where(nickname: params[:nickname])
+    @user = User.where(nickname: params[:nickname]).last
   end
 
   def user_params

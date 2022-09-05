@@ -10,4 +10,12 @@ module UsersHelper
   def user_profile_path(user)
     "/users/#{user.nickname}"
   end
+
+  def user_edit_profile_path(user)
+    "/users/#{user.nickname}/edit"
+  end
+
+  def user_update(user)
+    "/users/#{user.nickname}"
+  end
 end
