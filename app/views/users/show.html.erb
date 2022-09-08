@@ -26,7 +26,7 @@
 <% else %>
   <div class="container mb-lg all-center">
     <p class="mt-lg">
-      <%= link_to "Спросить что-то", new_question_path(user_id: @user.id),
+      <%= link_to "Спросить что-то", new_question_path(nickname: @user.nickname),
                   class: 'button button-yellow' %>
     </p>
   </div>

@@ -6,11 +6,13 @@ class QuestionsController < ApplicationController
     @question = Question.new(author: current_user)
 
     if @question.update(question_params_for_create)
-      redirect_to user_path(@question.user), notice: 'Вопрос создан!'
+      redirect_to "/users/#{@question.user.nickname}", notice: 'Вопрос создан!'
     else
       flash.now[:alert] = 'Вы неправильно заполнили формы для создания вопроса'
       render :new
     end
+
+
   end
 
   def update
@@ -34,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by(nickname: params[:nickname])
     @question = Question.new(user: @user)
     #@question.update(user: @user)
   end

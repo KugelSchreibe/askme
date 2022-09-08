@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(nickname: params[:nickname])
-    @questions = @user.questions.order("created_at ASC")
+    @questions = @user.questions.order("created_at DESC")
   end
 
   private

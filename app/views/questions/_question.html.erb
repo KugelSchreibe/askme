@@ -6,8 +6,16 @@
                      class: 'text-orange without-underline' %>
     </span>
     <span>
-      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.author),
+      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.user),
                      class: 'text-green without-underline' %>
+    </span>
+  <% else %>
+    <span>
+      от гостя
+    </span>
+    <span>
+      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.user),
+                      class: 'text-green without-underline' %>
     </span>
   <% end %>
 </h2>
