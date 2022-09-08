@@ -1,23 +1,21 @@
 <h2 class="title-lg mb title-sm">
   Вопрос <%= link_to "##{question.id}", question_path(question), class: 'without-underline text-orange' %>
+
   <% if question.author.present? %>
     <span>
       от <%= link_to "#{fnickname(question.author.nickname)}", user_profile_path(question.author),
                      class: 'text-orange without-underline' %>
     </span>
-    <span>
-      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.user),
-                     class: 'text-green without-underline' %>
-    </span>
   <% else %>
     <span>
       от гостя
     </span>
-    <span>
+  <% end %>
+
+  <span>
       для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.user),
                       class: 'text-green without-underline' %>
     </span>
-  <% end %>
 </h2>
 
 <div class="mb-lg text-orange">

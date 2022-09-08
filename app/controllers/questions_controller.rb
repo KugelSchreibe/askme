@@ -31,6 +31,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).first(10)
+    debugger
   end
 
   def new
