@@ -11,8 +11,6 @@ class QuestionsController < ApplicationController
       flash.now[:alert] = 'Вы неправильно заполнили формы для создания вопроса'
       render :new
     end
-
-
   end
 
   def update
@@ -31,8 +29,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).last(10)
-    @users = User.order(created_at: :desc).last(10)
+    @questions = Question.order(created_at: :desc).first(10)
+    @users = User.order(created_at: :desc).first(10)
   end
 
   def new
