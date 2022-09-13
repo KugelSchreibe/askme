@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(nickname: params[:nickname])
+    @user = User.find_by!(nickname: params[:nickname])
     @questions = @user.questions.order("created_at DESC")
   end
 
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(nickname: params[:nickname])
+    @user = User.find_by!(nickname: params[:nickname])
   end
 
   def user_params
