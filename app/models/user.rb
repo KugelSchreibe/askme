@@ -17,6 +17,6 @@ class User < ApplicationRecord
   private
 
   def downcase_nickname
-    nickname.try(:downcase!)
+    nickname&.downcase!
   end
 end
