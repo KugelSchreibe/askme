@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
   def create 
     @question = Question.new(author: current_user)
 
-    if @question.update(question_params_for_create)
-      #redirect_to "/users/#{@question.user.nickname}", notice: 'Вопрос создан!'
+    if @question.save(question_params_for_create)
       redirect_to user_path(@question.user.nickname), notice: 'Вопрос создан!'
     else
       flash.now[:alert] = 'Вы неправильно заполнили формы для создания вопроса'

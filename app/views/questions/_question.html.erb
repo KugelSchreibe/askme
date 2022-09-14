@@ -3,7 +3,7 @@
 
   <% if question.author.present? %>
     <span>
-      от <%= link_to "#{fnickname(question.author.nickname)}", user_profile_path(question.author),
+      от <%= link_to fnickname(question.author.nickname), user_profile_path(question.author),
                      class: 'text-orange without-underline' %>
     </span>
   <% else %>
