@@ -13,7 +13,7 @@
   <% end %>
 
   <span>
-      для <%= link_to "#{fnickname(question.user.nickname)}", user_profile_path(question.user),
+      для <%= link_to fnickname(question.user.nickname), user_profile_path(question.user),
                       class: 'text-green without-underline' %>
     </span>
 </h2>

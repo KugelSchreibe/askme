@@ -9,7 +9,7 @@
 
   <div class="mt">
     <p>
-      <%= image_tag @user.gravatar_url, title: "#{fnickname(@user.nickname)}", class: 'rounded' %>
+      <%= image_tag @user.gravatar_url, title: fnickname(@user.nickname), class: 'rounded' %>
     </p>
 
     <p class="text-sm mt-md mb-lg">
