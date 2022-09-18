@@ -5,7 +5,9 @@ class QuestionsController < ApplicationController
   def create 
     @question = Question.new(author: current_user)
 
-    if @question.save(question_params_for_create)
+    debugger
+
+    if @question.update(question_params_for_create)
       redirect_to user_path(@question.user.nickname), notice: 'Вопрос создан!'
     else
       flash.now[:alert] = 'Вы неправильно заполнили формы для создания вопроса'
@@ -36,7 +38,6 @@ class QuestionsController < ApplicationController
   def new
     @user = User.find_by!(nickname: params[:nickname])
     @question = Question.new(user: @user)
-    #@question.update(user: @user)
   end
 
   def edit
