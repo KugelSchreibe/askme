@@ -19,7 +19,7 @@
     <div>
       <% if current_user.present? %>
         <%= link_to fnickname(current_user.nickname), user_path(current_user.nickname), title: 'Профиль', class: 'mr-sm white-link' %>
-        <%= link_to fa_icon('cog'), user_path(current_user.nickname), title: 'Настройки', class: 'white-link mr-sm' %>
+        <%= link_to fa_icon('cog'), edit_user_path(current_user.nickname), title: 'Настройки', class: 'white-link mr-sm' %>
         <%= button_to fa_icon('sign-out'), session_path, title: 'Выход', method: :delete,
                       class: 'white-link', form: {data: {turbo_confirm: 'Вы уверены, что хотите выйти?'}} %>
       <% else %>
