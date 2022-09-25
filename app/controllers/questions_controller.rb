@@ -39,6 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @nick = current_user.nickname
   end
 
   def hide

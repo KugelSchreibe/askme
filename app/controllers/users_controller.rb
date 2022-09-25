@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   before_action :authorize_user, only: %i[edit udpate destroy]
+  before_action :fixed_nickname, only: %i[update]
 
   def new
     @user = User.new
@@ -52,6 +53,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by!(nickname: params[:nickname])
+  end
+
+  def fixed_nickname
+    @nickname ||= @user.nickname
   end
 
   def user_params

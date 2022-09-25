@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: { in: 3..40 },
             format: { with: /\A[\w]+\z/ }
   validates :header_color, format: { with: /\A#\h{3}{1,2}\z/ }
+  validates :name, presence: true, length: { in: 2..15 }
 
   has_secure_password
   gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')

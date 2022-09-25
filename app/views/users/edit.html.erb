@@ -21,7 +21,7 @@
   <%= render 'errors_output', obj: @user %>
 
   <div class="mt">
-    <%= form_with model: @user, method: :patch, url: user_path(@user.nickname), data: {turbo: false } do |form| %>
+    <%= form_with model: @user, method: :patch, url: user_path(@nickname), data: {turbo: false } do |form| %>
       <p>
         <%= form.label :name, 'Ваше имя' %>
       </p>
