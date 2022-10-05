@@ -10,6 +10,20 @@
   </div>
 </div>
 
+<div class="container mb-sm">
+  <h2 class="title-lg mb text-center">
+    Хештеги
+  </h2>
+
+  <div class="hashtags-box">
+    <% @hashtags.each do |hashtag| %>
+      <div>
+        <%= render partial: 'questions/hashtag', locals: {hashtag: hashtag.body} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="container mt-sm mb-sm">
   <h2 class="title-lg">
     <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>

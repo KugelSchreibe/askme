@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  helper_method :select_hashtags
 
   private
 
@@ -9,5 +10,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_with_alert
     redirect_to root_path, alert: 'Вам сюда нельзя!'
+  end
+
+  def select_hashtags(text)
+    text.scan(/#[\wА-Яа-яЁё]+/).map { |tag| tag[1..-1] }
   end
 end

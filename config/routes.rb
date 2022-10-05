@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resource :session, only: %i[new create destroy]
   resources :users, except: %i[index], param: :nickname
+  resources :question_hashtags
+
+  get '/questions/hashtag/:hashtag', to: 'questions#questions_by_hashtag'
 end

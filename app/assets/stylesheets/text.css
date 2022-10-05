@@ -62,3 +62,7 @@ a, button {
 .without-underline {
   text-decoration: none;
 }
+
+.hashtag {
+  color: #683fb9;
+}

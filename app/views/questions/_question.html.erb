@@ -19,7 +19,24 @@
 </h2>
 
 <div class="mb-lg text-orange">
-  <%= simple_format h(question.body) %>
+  <% lines = question.body.split(/\n/) %>
+  <% lines.each do |text_line| %>
+    <% line_parts = slice_by_hashtags(text_line) %>
+    <% line_hashtags = select_hashtags(text_line) %>
+    <% pair_quantity = ((line_hashtags.size + line_parts.size).to_f / 2).ceil %>
+
+    <p>
+      <% pair_quantity.times do |index| %>
+        <% unless line_parts[index].nil? %>
+          <%= h(line_parts[index]) %>
+        <% end %>
+
+        <% unless line_hashtags[index].nil? %>
+          <%= render partial: 'questions/hashtag', locals: { hashtag: line_hashtags[index] } %>
+        <% end %>
+      <% end %>
+    </p>
+  <% end %>
 </div>
 
 <% if question.answer.present? %>

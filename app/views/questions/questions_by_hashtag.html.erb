@@ -1,0 +1,21 @@
+<div class="container mt-sm mb-sm">
+  <h2 class="title-lg">
+    Вопросы с хештегом
+    <span class="hashtag">
+      <%= fhashtag(@hashtag) %>
+    </span>
+  </h2>
+</div>
+
+<% @questions.each do |question| %>
+  <% if question.hidden? %>
+    <div class="container hidden mb-sm">
+      <%= render question%>
+    </div>
+  <% else %>
+    <div class="container mb-sm">
+      <%= render question%>
+    </div>
+  <% end %>
+<% end %>
+

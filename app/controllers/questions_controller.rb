@@ -31,6 +31,12 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).first(10)
+    @hashtags = Hashtag.all
+  end
+
+  def questions_by_hashtag
+    @hashtag = params[:hashtag]
+    @questions = Question.joins(:hashtags).where(hashtags: { body: @hashtag}).order(created_at: :desc)
   end
 
   def new

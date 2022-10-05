@@ -9,4 +9,8 @@ module ApplicationHelper
       many
     end
   end
+
+  def slice_by_hashtags(text_line)
+    text_line.split(/#[\wА-Яа-яЁё]+/)
+  end
 end
