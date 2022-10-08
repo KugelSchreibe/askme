@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :select_hashtags
+  helper_method :find_hashtag_by_body
 
   private
 

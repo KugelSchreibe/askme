@@ -8,6 +8,6 @@ module QuestionsHelper
   end
 
   def questions_hashtag_path(hashtag)
-    "/questions/hashtag/#{hashtag}"
+    "/hashtags/#{hashtag}"
   end
 end

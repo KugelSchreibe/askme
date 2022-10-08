@@ -7,7 +7,7 @@ class Question < ApplicationRecord
 
   validates :body, presence: true, length: { in: 3..280 }
 
-  after_save :create_all_hashtags
+  after_create_commit :create_all_hashtags
 
   private
 
@@ -15,12 +15,8 @@ class Question < ApplicationRecord
     hashtags_body = body.scan(/#[\wА-Яа-яЁё]+/).map { |tag| tag[1..-1].downcase }
 
     hashtags_body.each do |tag|
-      if Hashtag.find_by(body: tag).nil?
-        hashtag = Hashtag.create(body: tag)
-        QuestionHashtag.create(question_id: id, hashtag_id: hashtag.id)
-      else
-        QuestionHashtag.create(question_id: id, hashtag_id: Hashtag.find_by(body: tag).id)
-      end
+      hashtag = Hashtag.create_or_find_by(body: tag)
+      QuestionHashtag.create(question_id: id, hashtag_id: hashtag.id)
     end
   end
 end
