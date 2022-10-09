@@ -12,11 +12,6 @@ class Question < ApplicationRecord
   private
 
   def create_all_hashtags
-    hashtags_body = body.scan(/#[\wА-Яа-яЁё]+/).map { |tag| tag[1..-1].downcase }
-
-    hashtags_body.each do |tag|
-      hashtag = Hashtag.create_or_find_by(body: tag)
-      QuestionHashtag.create(question_id: id, hashtag_id: hashtag.id)
-    end
+    self.hashtags = body.scan(/#[\wА-Яа-яЁё]+/).map { |tag| Hashtag.create_or_find_by(body: tag[1..-1]) }
   end
 end
