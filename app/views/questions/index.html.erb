@@ -18,7 +18,7 @@
   <div class="hashtags-box">
     <% @hashtags.each do |hashtag| %>
       <div>
-        <%= render partial: 'questions/hashtag', locals: {hashtag: hashtag.body} %>
+        <%= render partial: 'hashtags/hashtag', locals: {hashtag: hashtag.body} %>
       </div>
     <% end %>
   </div>

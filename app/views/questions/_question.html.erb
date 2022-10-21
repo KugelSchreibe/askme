@@ -32,7 +32,7 @@
         <% end %>
 
         <% unless line_hashtags[index].nil? %>
-          <%= render partial: 'questions/hashtag', locals: { hashtag: line_hashtags[index] } %>
+          <%= render partial: 'hashtags/hashtag', locals: { hashtag: line_hashtags[index] } %>
         <% end %>
       <% end %>
     </p>
